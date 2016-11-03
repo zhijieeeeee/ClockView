@@ -15,54 +15,54 @@ import java.util.Calendar;
 
 /**
  * <p>
- * Descriptionï¼šåŠ¨æ€æ—¶é’Ÿ
+ * Description£º¶¯Ì¬Ê±ÖÓ
  * </p>
  *
  * @author tangzhijie
  */
 public class ClockView extends View {
 
-    //ä½¿ç”¨wrap_contentæ—¶é»˜è®¤çš„å°ºå¯¸
+    //Ê¹ÓÃwrap_contentÊ±Ä¬ÈÏµÄ³ß´ç
     private final static int DEFAULT_SIZE = 400;
 
-    //åˆ»åº¦çº¿å®½åº¦
+    //¿Ì¶ÈÏß¿í¶È
     private final static int MARK_WIDTH = 8;
 
-    //åˆ»åº¦çº¿é•¿åº¦
+    //¿Ì¶ÈÏß³¤¶È
     private final static int MARK_LENGTH = 20;
 
-    //åˆ»åº¦çº¿ä¸åœ†çš„è·ç¦»
+    //¿Ì¶ÈÏßÓëÔ²µÄ¾àÀë
     private final static int MARK_GAP = 12;
 
-    //åœ†å¿ƒåæ ‡
+    //Ô²ĞÄ×ø±ê
     private int centerX;
     private int centerY;
 
-    //åœ†åŠå¾„
+    //Ô²°ë¾¶
     private int radius;
 
-    //åœ†çš„ç”»ç¬”
+    //Ô²µÄ»­±Ê
     private Paint circlePaint;
 
-    //åˆ»åº¦çº¿ç”»ç¬”
+    //¿Ì¶ÈÏß»­±Ê
     private Paint markPaint;
 
-    //æ—¶é’ˆç”»ç¬”
+    //Ê±Õë»­±Ê
     private Paint hourPaint;
 
-    //åˆ†é’ˆç”»ç¬”
+    //·ÖÕë»­±Ê
     private Paint minutePaint;
 
-    //ç§’é’ˆç”»ç¬”
+    //ÃëÕë»­±Ê
     private Paint secondPaint;
 
-    //æ—¶é’ˆé•¿åº¦
+    //Ê±Õë³¤¶È
     private int hourLineLength;
 
-    //åˆ†é’ˆé•¿åº¦
+    //·ÖÕë³¤¶È
     private int minuteLineLength;
 
-    //ç§’é’ˆé•¿åº¦
+    //ÃëÕë³¤¶È
     private int secondLineLength;
 
     private Bitmap hourBitmap;
@@ -73,20 +73,20 @@ public class ClockView extends View {
     private Canvas minuteCanvas;
     private Canvas secondCanvas;
 
-    //åœ†çš„é¢œè‰²
+    //Ô²µÄÑÕÉ«
     private int mCircleColor = Color.WHITE;
-    //æ—¶é’ˆçš„é¢œè‰²
+    //Ê±ÕëµÄÑÕÉ«
     private int mHourColor = Color.BLACK;
-    //åˆ†é’ˆçš„é¢œè‰²
+    //·ÖÕëµÄÑÕÉ«
     private int mMinuteColor = Color.BLACK;
-    //ç§’é’ˆçš„é¢œè‰²
+    //ÃëÕëµÄÑÕÉ«
     private int mSecondColor = Color.RED;
-    //ä¸€åˆ»é’Ÿåˆ»åº¦çº¿çš„é¢œè‰²
+    //Ò»¿ÌÖÓ¿Ì¶ÈÏßµÄÑÕÉ«
     private int mQuarterMarkColor = Color.parseColor("#B5B5B5");
-    //åˆ†é’Ÿåˆ»åº¦çº¿çš„é¢œè‰²
+    //·ÖÖÓ¿Ì¶ÈÏßµÄÑÕÉ«
     private int mMinuteMarkColor = Color.parseColor("#EBEBEB");
 
-    //è·å–æ—¶é—´ç›‘å¬
+    //»ñÈ¡Ê±¼ä¼àÌı
     private OnCurrentTimeListener onCurrentTimeListener;
 
     public void setOnCurrentTimeListener(OnCurrentTimeListener onCurrentTimeListener) {
@@ -130,15 +130,15 @@ public class ClockView extends View {
         minuteLineLength = radius * 3 / 4;
         secondLineLength = radius * 3 / 4;
 
-        //æ—¶é’ˆ
+        //Ê±Õë
         hourBitmap = Bitmap.createBitmap(getMeasuredWidth(), getMeasuredHeight(), Bitmap.Config.ARGB_8888);
         hourCanvas = new Canvas(hourBitmap);
 
-        //åˆ†é’ˆ
+        //·ÖÕë
         minuteBitmap = Bitmap.createBitmap(getMeasuredWidth(), getMeasuredHeight(), Bitmap.Config.ARGB_8888);
         minuteCanvas = new Canvas(minuteBitmap);
 
-        //ç§’é’ˆ
+        //ÃëÕë
         secondBitmap = Bitmap.createBitmap(getMeasuredWidth(), getMeasuredHeight(), Bitmap.Config.ARGB_8888);
         secondCanvas = new Canvas(secondBitmap);
 
@@ -147,11 +147,11 @@ public class ClockView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        //ç»˜åˆ¶åœ†
+        //»æÖÆÔ²
         canvas.drawCircle(centerX, centerY, radius, circlePaint);
-        //ç»˜åˆ¶åˆ»åº¦çº¿
+        //»æÖÆ¿Ì¶ÈÏß
         for (int i = 0; i < 12; i++) {
-            if (i % 3 == 0) {//ä¸€åˆ»é’Ÿ
+            if (i % 3 == 0) {//Ò»¿ÌÖÓ
                 markPaint.setColor(mQuarterMarkColor);
             } else {
                 markPaint.setColor(mMinuteMarkColor);
@@ -171,17 +171,17 @@ public class ClockView extends View {
         int minute = calendar.get(Calendar.MINUTE);
         int second = calendar.get(Calendar.SECOND);
 
-        //(æ–¹æ¡ˆä¸€)æ¯è¿‡ä¸€å°æ—¶(3600ç§’)æ—¶é’ˆæ·»åŠ 30åº¦ï¼Œæ‰€ä»¥æ¯ç§’æ—¶é’ˆæ·»åŠ ï¼ˆ1/120ï¼‰åº¦
-        //(æ–¹æ¡ˆäºŒ)æ¯è¿‡ä¸€å°æ—¶(60åˆ†é’Ÿ)æ—¶é’ˆæ·»åŠ 30åº¦ï¼Œæ‰€ä»¥æ¯åˆ†é’Ÿæ—¶é’ˆæ·»åŠ ï¼ˆ1/2ï¼‰åº¦
+        //(·½°¸Ò»)Ã¿¹ıÒ»Ğ¡Ê±(3600Ãë)Ê±ÕëÌí¼Ó30¶È£¬ËùÒÔÃ¿ÃëÊ±ÕëÌí¼Ó£¨1/120£©¶È
+        //(·½°¸¶ş)Ã¿¹ıÒ»Ğ¡Ê±(60·ÖÖÓ)Ê±ÕëÌí¼Ó30¶È£¬ËùÒÔÃ¿·ÖÖÓÊ±ÕëÌí¼Ó£¨1/2£©¶È
         hourCanvas.save();
-        //æ¸…ç©ºç”»å¸ƒ
+        //Çå¿Õ»­²¼
         hourCanvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
         hourCanvas.rotate(hour24 * 30 + (minute * 0.5f), getMeasuredWidth() / 2, getMeasuredHeight() / 2);
         hourCanvas.drawLine(getMeasuredWidth() / 2, getMeasuredHeight() / 2,
                 getMeasuredWidth() / 2, getMeasuredHeight() / 2 - hourLineLength, hourPaint);
         hourCanvas.restore();
 
-        //æ¯è¿‡ä¸€åˆ†é’Ÿï¼ˆ60ç§’ï¼‰åˆ†é’ˆæ·»åŠ 6åº¦ï¼Œæ‰€ä»¥æ¯ç§’åˆ†é’ˆæ·»åŠ ï¼ˆ1/10ï¼‰åº¦ï¼›å½“minuteåŠ 1æ—¶ï¼Œæ­£å¥½secondæ˜¯0
+        //Ã¿¹ıÒ»·ÖÖÓ£¨60Ãë£©·ÖÕëÌí¼Ó6¶È£¬ËùÒÔÃ¿Ãë·ÖÕëÌí¼Ó£¨1/10£©¶È£»µ±minute¼Ó1Ê±£¬ÕıºÃsecondÊÇ0
         minuteCanvas.save();
         minuteCanvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
         minuteCanvas.rotate(minute * 6 + (second * 0.1f), getMeasuredWidth() / 2, getMeasuredHeight() / 2);
@@ -189,7 +189,7 @@ public class ClockView extends View {
                 getMeasuredWidth() / 2, getMeasuredHeight() / 2 - minuteLineLength, minutePaint);
         minuteCanvas.restore();
 
-        //æ¯è¿‡ä¸€ç§’æ—‹è½¬6åº¦
+        //Ã¿¹ıÒ»ÃëĞı×ª6¶È
         secondCanvas.save();
         secondCanvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
         secondCanvas.rotate(second * 6, getMeasuredWidth() / 2, getMeasuredHeight() / 2);
@@ -201,11 +201,11 @@ public class ClockView extends View {
         canvas.drawBitmap(minuteBitmap, 0, 0, null);
         canvas.drawBitmap(secondBitmap, 0, 0, null);
 
-        //æ¯éš”1sé‡æ–°ç»˜åˆ¶
+        //Ã¿¸ô1sÖØĞÂ»æÖÆ
         postInvalidateDelayed(1000);
 
         if (onCurrentTimeListener != null) {
-            //å°æ—¶é‡‡ç”¨24å°æ—¶åˆ¶è¿”å›
+            //Ğ¡Ê±²ÉÓÃ24Ğ¡Ê±ÖÆ·µ»Ø
             int h = calendar.get(Calendar.HOUR_OF_DAY);
             String currentTime = intAdd0(h) + ":" + intAdd0(minute) + ":" + intAdd0(second);
             onCurrentTimeListener.currentTime(currentTime);
@@ -213,7 +213,7 @@ public class ClockView extends View {
     }
 
     /**
-     * åˆå§‹åŒ–
+     * ³õÊ¼»¯
      */
     private void init() {
         circlePaint = new Paint();
@@ -251,7 +251,7 @@ public class ClockView extends View {
     }
 
     /**
-     * é‡æ–°è®¾ç½®viewå°ºå¯¸
+     * ÖØĞÂÉèÖÃview³ß´ç
      */
     private void reMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         int measureWidth = MeasureSpec.getSize(widthMeasureSpec);
@@ -273,7 +273,7 @@ public class ClockView extends View {
     }
 
     /**
-     * intå°äº10çš„æ·»åŠ 0
+     * intĞ¡ÓÚ10µÄÌí¼Ó0
      *
      * @param i
      * @return
