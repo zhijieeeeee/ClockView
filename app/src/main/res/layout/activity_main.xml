@@ -1,14 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/activity_main"
-    android:background="@android:color/darker_gray"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:don="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@android:color/darker_gray"
+    android:gravity="center"
+    android:orientation="vertical">
 
     <com.don.clockviewlibrary.ClockView
-        android:id="@+id/moveClockView"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true" />
-</RelativeLayout>
+        android:id="@+id/clockView"
+        android:layout_width="150dp"
+        android:layout_height="150dp" />
+
+    <com.don.clockviewlibrary.ClockView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="40dp"
+        don:circle_color="@android:color/holo_blue_light"
+        don:hour_color="#ff00ff"
+        don:minute_color="@android:color/holo_red_light"
+        don:minute_mark_color="@android:color/white"
+        don:quarter_mark_color="@android:color/black"
+        don:second_color="@android:color/holo_green_light" />
+</LinearLayout>
