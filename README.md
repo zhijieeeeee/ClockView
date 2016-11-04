@@ -3,9 +3,11 @@
 秒针每秒动一次，分针和时针会根据时间进行缓慢的转动。
 
 #效果图
-
-<img src="https://github.com/zhijieeeeee/ClockView/blob/master/screenshot/preview.png" width = "270" height = "480" alt="效果图" />
-
+<div  align="center">
+<img src="https://github.com/zhijieeeeee/ClockView/blob/master/screenshot/pre1.png" width = "270" height = "480" alt="效果图" />
+<img src="https://github.com/zhijieeeeee/ClockView/blob/master/screenshot/pre1.png" width = "270" height = "480" alt="效果图" />
+<img src="https://github.com/zhijieeeeee/ClockView/blob/master/screenshot/pre1.png" width = "270" height = "480" alt="效果图" />
+</div>
 #基本使用
 
 ###1.在gradle中添加依赖
@@ -31,7 +33,8 @@
         don:minute_color="@android:color/holo_red_light"
         don:minute_mark_color="@android:color/white"
         don:quarter_mark_color="@android:color/black"
-        don:second_color="@android:color/holo_green_light" />
+        don:second_color="@android:color/holo_green_light" 
+		don:draw_center_circle="true"/>
 
 
 * circle\_color：时钟的背景颜色（圆的颜色）
@@ -45,6 +48,8 @@
 * minute\_mark\_color：分钟刻度线的颜色
 
 * quarter\_mark\_color：一刻钟刻度线的颜色
+
+* draw\_center\_circle：是否绘制3个指针的圆心
 
 
 

@@ -7,5 +7,6 @@
         <attr name="second_color" format="color" />
         <attr name="quarter_mark_color" format="color" />
         <attr name="minute_mark_color" format="color" />
+        <attr name="draw_center_circle" format="boolean" />
     </declare-styleable>
 </resources>

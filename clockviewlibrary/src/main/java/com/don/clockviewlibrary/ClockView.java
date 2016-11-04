@@ -34,6 +34,15 @@ public class ClockView extends View {
     //刻度线与圆的距离
     private final static int MARK_GAP = 12;
 
+    //时针宽度
+    private final static int HOUR_LINE_WIDTH = 10;
+
+    //时针宽度
+    private final static int MINUTE_LINE_WIDTH = 6;
+
+    //时针宽度
+    private final static int SECOND_LINE_WIDTH = 4;
+
     //圆心坐标
     private int centerX;
     private int centerY;
@@ -85,6 +94,8 @@ public class ClockView extends View {
     private int mQuarterMarkColor = Color.parseColor("#B5B5B5");
     //分钟刻度线的颜色
     private int mMinuteMarkColor = Color.parseColor("#EBEBEB");
+    //是否绘制3个指针的圆心
+    private boolean isDrawCenterCircle = false;
 
     //获取时间监听
     private OnCurrentTimeListener onCurrentTimeListener;
@@ -111,6 +122,7 @@ public class ClockView extends View {
         mSecondColor = a.getColor(R.styleable.ClockView_second_color, Color.RED);
         mQuarterMarkColor = a.getColor(R.styleable.ClockView_quarter_mark_color, Color.parseColor("#B5B5B5"));
         mMinuteMarkColor = a.getColor(R.styleable.ClockView_minute_mark_color, Color.parseColor("#EBEBEB"));
+        isDrawCenterCircle = a.getBoolean(R.styleable.ClockView_draw_center_circle, false);
         a.recycle();
         init();
     }
@@ -179,22 +191,30 @@ public class ClockView extends View {
         hourCanvas.rotate(hour24 * 30 + (minute * 0.5f), getMeasuredWidth() / 2, getMeasuredHeight() / 2);
         hourCanvas.drawLine(getMeasuredWidth() / 2, getMeasuredHeight() / 2,
                 getMeasuredWidth() / 2, getMeasuredHeight() / 2 - hourLineLength, hourPaint);
+        if (isDrawCenterCircle)//根据指针的颜色绘制圆心
+            hourCanvas.drawCircle(getMeasuredWidth() / 2, getMeasuredHeight() / 2, 2 * HOUR_LINE_WIDTH, hourPaint);
         hourCanvas.restore();
 
         //每过一分钟（60秒）分针添加6度，所以每秒分针添加（1/10）度；当minute加1时，正好second是0
         minuteCanvas.save();
+        //清空画布
         minuteCanvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
         minuteCanvas.rotate(minute * 6 + (second * 0.1f), getMeasuredWidth() / 2, getMeasuredHeight() / 2);
         minuteCanvas.drawLine(getMeasuredWidth() / 2, getMeasuredHeight() / 2,
                 getMeasuredWidth() / 2, getMeasuredHeight() / 2 - minuteLineLength, minutePaint);
+        if (isDrawCenterCircle)//根据指针的颜色绘制圆心
+            minuteCanvas.drawCircle(getMeasuredWidth() / 2, getMeasuredHeight() / 2, 2 * MINUTE_LINE_WIDTH, minutePaint);
         minuteCanvas.restore();
 
         //每过一秒旋转6度
         secondCanvas.save();
+        //清空画布
         secondCanvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
         secondCanvas.rotate(second * 6, getMeasuredWidth() / 2, getMeasuredHeight() / 2);
         secondCanvas.drawLine(getMeasuredWidth() / 2, getMeasuredHeight() / 2,
                 getMeasuredWidth() / 2, getMeasuredHeight() / 2 - secondLineLength, secondPaint);
+        if (isDrawCenterCircle)//根据指针的颜色绘制圆心
+            secondCanvas.drawCircle(getMeasuredWidth() / 2, getMeasuredHeight() / 2, 2 * SECOND_LINE_WIDTH, secondPaint);
         secondCanvas.restore();
 
         canvas.drawBitmap(hourBitmap, 0, 0, null);
@@ -232,21 +252,21 @@ public class ClockView extends View {
         hourPaint.setColor(mHourColor);
         hourPaint.setStyle(Paint.Style.FILL);
         hourPaint.setStrokeCap(Paint.Cap.ROUND);
-        hourPaint.setStrokeWidth(10);
+        hourPaint.setStrokeWidth(HOUR_LINE_WIDTH);
 
         minutePaint = new Paint();
         minutePaint.setAntiAlias(true);
         minutePaint.setColor(mMinuteColor);
         minutePaint.setStyle(Paint.Style.FILL);
         minutePaint.setStrokeCap(Paint.Cap.ROUND);
-        minutePaint.setStrokeWidth(6);
+        minutePaint.setStrokeWidth(MINUTE_LINE_WIDTH);
 
         secondPaint = new Paint();
         secondPaint.setAntiAlias(true);
         secondPaint.setColor(mSecondColor);
         secondPaint.setStyle(Paint.Style.FILL);
         secondPaint.setStrokeCap(Paint.Cap.ROUND);
-        secondPaint.setStrokeWidth(4);
+        secondPaint.setStrokeWidth(SECOND_LINE_WIDTH);
 
     }
 
