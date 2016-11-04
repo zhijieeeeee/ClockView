@@ -34,17 +34,19 @@
         don:second_color="@android:color/holo_green_light" />
 
 
-* circle_color：时钟的背景颜色（圆的颜色）
+* circle\_color：时钟的背景颜色（圆的颜色）
 
-* hour_color：时针的颜色
+* hour\_color：时针的颜色
 
-* minute_color：分针的颜色
+* minute\_color：分针的颜色
 
-* minute_mark_color：秒针的颜色
+* second\_color：秒针的颜色
 
-* quarter_mark_color：一刻钟刻度线的颜色
+* minute\_mark\_color：分钟刻度线的颜色
 
-* second_color：分钟刻度线的颜色
+* quarter\_mark\_color：一刻钟刻度线的颜色
+
+
 
 ###3.代码中可设置时间的监听
 
