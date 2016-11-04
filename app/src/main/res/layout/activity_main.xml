@@ -9,20 +9,18 @@
 
     <com.don.clockviewlibrary.ClockView
         android:id="@+id/clockView"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:visibility="gone"
-        don:draw_center_circle="true" />
+        android:layout_width="150dp"
+        android:layout_height="150dp" />
 
     <com.don.clockviewlibrary.ClockView
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:layout_marginTop="40dp"
         don:circle_color="@android:color/holo_blue_light"
+        don:draw_center_circle="true"
         don:hour_color="#ff00ff"
-        don:minute_color="@android:color/black"
+        don:minute_color="@android:color/holo_red_light"
         don:minute_mark_color="@android:color/white"
         don:quarter_mark_color="@android:color/black"
-        don:second_color="@android:color/holo_green_light"
-        don:draw_center_circle="true"/>
+        don:second_color="@android:color/holo_green_light" />
 </LinearLayout>
