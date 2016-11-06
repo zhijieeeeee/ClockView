@@ -16,13 +16,18 @@ allprojects {
     repositories {
         jcenter()
     }
+    //解决编码GBK的不可映射字符问题
+    tasks.withType(Javadoc) {
+        options{
+            encoding "UTF-8"
+            charSet 'UTF-8'
+            links "http://docs.oracle.com/javase/7/docs/api"
+        }
+    }
 }
 
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
 
-tasks.withType(Javadoc) {
-    options.addStringOption('Xdoclint:none', '-quiet')
-    options.addStringOption('encoding', 'UTF-8')
-}
+
