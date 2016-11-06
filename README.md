@@ -12,7 +12,7 @@
 
 ###1.在gradle中添加依赖
 	
-	compile 'com.don:clockviewlibrary:1.0.0'
+	compile 'com.don:clockviewlibrary:1.0.1'
 
 ###2.布局中使用
 
