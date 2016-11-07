@@ -147,15 +147,15 @@ public class ClockView extends View {
         secondLineLength = radius * 3 / 4;
 
         //时针
-        hourBitmap = Bitmap.createBitmap(radius*2, getMeasuredHeight(), Bitmap.Config.ARGB_8888);
+        hourBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
         hourCanvas = new Canvas(hourBitmap);
 
         //分针
-        minuteBitmap = Bitmap.createBitmap(getMeasuredWidth(), getMeasuredHeight(), Bitmap.Config.ARGB_8888);
+        minuteBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
         minuteCanvas = new Canvas(minuteBitmap);
 
         //秒针
-        secondBitmap = Bitmap.createBitmap(getMeasuredWidth(), getMeasuredHeight(), Bitmap.Config.ARGB_8888);
+        secondBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
         secondCanvas = new Canvas(secondBitmap);
 
     }
@@ -192,33 +192,33 @@ public class ClockView extends View {
         hourCanvas.save();
         //清空画布
         hourCanvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
-        hourCanvas.rotate(hour24 * 30 + (minute * 0.5f), getMeasuredWidth() / 2, getMeasuredHeight() / 2);
-        hourCanvas.drawLine(getMeasuredWidth() / 2, getMeasuredHeight() / 2,
-                getMeasuredWidth() / 2, getMeasuredHeight() / 2 - hourLineLength, hourPaint);
+        hourCanvas.rotate(hour24 * 30 + (minute * 0.5f), centerX, centerY);
+        hourCanvas.drawLine(centerX, centerY,
+                centerX, centerY - hourLineLength, hourPaint);
         if (isDrawCenterCircle)//根据指针的颜色绘制圆心
-            hourCanvas.drawCircle(getMeasuredWidth() / 2, getMeasuredHeight() / 2, 2 * HOUR_LINE_WIDTH, hourPaint);
+            hourCanvas.drawCircle(centerX, centerY, 2 * HOUR_LINE_WIDTH, hourPaint);
         hourCanvas.restore();
 
         //每过一分钟（60秒）分针添加6度，所以每秒分针添加（1/10）度；当minute加1时，正好second是0
         minuteCanvas.save();
         //清空画布
         minuteCanvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
-        minuteCanvas.rotate(minute * 6 + (second * 0.1f), getMeasuredWidth() / 2, getMeasuredHeight() / 2);
-        minuteCanvas.drawLine(getMeasuredWidth() / 2, getMeasuredHeight() / 2,
-                getMeasuredWidth() / 2, getMeasuredHeight() / 2 - minuteLineLength, minutePaint);
+        minuteCanvas.rotate(minute * 6 + (second * 0.1f), centerX, centerY);
+        minuteCanvas.drawLine(centerX, centerY,
+                centerX, centerY - minuteLineLength, minutePaint);
         if (isDrawCenterCircle)//根据指针的颜色绘制圆心
-            minuteCanvas.drawCircle(getMeasuredWidth() / 2, getMeasuredHeight() / 2, 2 * MINUTE_LINE_WIDTH, minutePaint);
+            minuteCanvas.drawCircle(centerX, centerY, 2 * MINUTE_LINE_WIDTH, minutePaint);
         minuteCanvas.restore();
 
         //每过一秒旋转6度
         secondCanvas.save();
         //清空画布
         secondCanvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
-        secondCanvas.rotate(second * 6, getMeasuredWidth() / 2, getMeasuredHeight() / 2);
-        secondCanvas.drawLine(getMeasuredWidth() / 2, getMeasuredHeight() / 2,
-                getMeasuredWidth() / 2, getMeasuredHeight() / 2 - secondLineLength, secondPaint);
+        secondCanvas.rotate(second * 6, centerX, centerY);
+        secondCanvas.drawLine(centerX, centerY,
+                centerX, centerY - secondLineLength, secondPaint);
         if (isDrawCenterCircle)//根据指针的颜色绘制圆心
-            secondCanvas.drawCircle(getMeasuredWidth() / 2, getMeasuredHeight() / 2, 2 * SECOND_LINE_WIDTH, secondPaint);
+            secondCanvas.drawCircle(centerX, centerY, 2 * SECOND_LINE_WIDTH, secondPaint);
         secondCanvas.restore();
 
         canvas.drawBitmap(hourBitmap, 0, 0, null);
