@@ -2,6 +2,7 @@
 一个自定义的动态时钟View，可根据自己的需求完成各种颜色的搭配，大小设置。
 
 #效果图
+<img src="https://github.com/zhijieeeeee/ClockView/blob/master/screenshot/preview.gif" width = "270" height = "480" alt="效果图" />
 <div  align="center">
 <img src="https://github.com/zhijieeeeee/ClockView/blob/master/screenshot/pre1.png" width = "270" height = "480" alt="效果图" />
 <img src="https://github.com/zhijieeeeee/ClockView/blob/master/screenshot/pre2.png" width = "270" height = "480" alt="效果图" />
