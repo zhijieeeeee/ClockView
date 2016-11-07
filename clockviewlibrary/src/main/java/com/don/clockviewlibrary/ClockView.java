@@ -132,10 +132,14 @@ public class ClockView extends View {
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         reMeasure(widthMeasureSpec, heightMeasureSpec);
-        int width = getMeasuredWidth() - getPaddingLeft() - getPaddingRight();
-        int height = getMeasuredHeight() - getPaddingTop() - getPaddingBottom();
-        centerX = width / 2 + getPaddingLeft();
-        centerY = height / 2 + getPaddingTop();
+//        int width = getMeasuredWidth() - getPaddingLeft() - getPaddingRight();
+//        int height = getMeasuredHeight() - getPaddingTop() - getPaddingBottom();
+//        centerX = width / 2 + getPaddingLeft();
+//        centerY = height / 2 + getPaddingTop();
+        int width = getMeasuredWidth();
+        int height = getMeasuredHeight();
+        centerX = width / 2 ;
+        centerY = height / 2;
         radius = Math.min(width, height) / 2;
 
         hourLineLength = radius / 2;
@@ -143,7 +147,7 @@ public class ClockView extends View {
         secondLineLength = radius * 3 / 4;
 
         //时针
-        hourBitmap = Bitmap.createBitmap(getMeasuredWidth(), getMeasuredHeight(), Bitmap.Config.ARGB_8888);
+        hourBitmap = Bitmap.createBitmap(radius*2, getMeasuredHeight(), Bitmap.Config.ARGB_8888);
         hourCanvas = new Canvas(hourBitmap);
 
         //分针
