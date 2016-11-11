@@ -37,10 +37,10 @@ public class ClockView extends View {
     //时针宽度
     private final static int HOUR_LINE_WIDTH = 10;
 
-    //时针宽度
+    //分针宽度
     private final static int MINUTE_LINE_WIDTH = 6;
 
-    //时针宽度
+    //秒针宽度
     private final static int SECOND_LINE_WIDTH = 4;
 
     //圆心坐标
@@ -183,7 +183,7 @@ public class ClockView extends View {
         canvas.save();
 
         Calendar calendar = Calendar.getInstance();
-        int hour24 = calendar.get(Calendar.HOUR);
+        int hour12 = calendar.get(Calendar.HOUR);
         int minute = calendar.get(Calendar.MINUTE);
         int second = calendar.get(Calendar.SECOND);
 
@@ -192,7 +192,7 @@ public class ClockView extends View {
         hourCanvas.save();
         //清空画布
         hourCanvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
-        hourCanvas.rotate(hour24 * 30 + (minute * 0.5f), centerX, centerY);
+        hourCanvas.rotate(hour12 * 30 + (minute * 0.5f), centerX, centerY);
         hourCanvas.drawLine(centerX, centerY,
                 centerX, centerY - hourLineLength, hourPaint);
         if (isDrawCenterCircle)//根据指针的颜色绘制圆心
