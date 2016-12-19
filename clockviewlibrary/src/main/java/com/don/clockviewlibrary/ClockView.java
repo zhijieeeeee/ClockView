@@ -31,7 +31,7 @@ public class ClockView extends View {
     //刻度线长度
     private final static int MARK_LENGTH = 20;
 
-    //刻度线与圆的距离
+    //刻度线与圆的间隙
     private final static int MARK_GAP = 12;
 
     //时针宽度
@@ -192,7 +192,7 @@ public class ClockView extends View {
         hourCanvas.save();
         //清空画布
         hourCanvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
-        hourCanvas.rotate(hour12 * 30 + (minute * 0.5f), centerX, centerY);
+        hourCanvas.rotate(hour12 * 30 + minute * 0.5f, centerX, centerY);
         hourCanvas.drawLine(centerX, centerY,
                 centerX, centerY - hourLineLength, hourPaint);
         if (isDrawCenterCircle)//根据指针的颜色绘制圆心
@@ -203,7 +203,7 @@ public class ClockView extends View {
         minuteCanvas.save();
         //清空画布
         minuteCanvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
-        minuteCanvas.rotate(minute * 6 + (second * 0.1f), centerX, centerY);
+        minuteCanvas.rotate(minute * 6 + second * 0.1f, centerX, centerY);
         minuteCanvas.drawLine(centerX, centerY,
                 centerX, centerY - minuteLineLength, minutePaint);
         if (isDrawCenterCircle)//根据指针的颜色绘制圆心
