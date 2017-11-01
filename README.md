@@ -1,24 +1,24 @@
-# ClockView
+#  ClockView
 一个自定义的动态时钟View，可根据自己的需求完成各种颜色的搭配，大小设置。
 
-#效果图
+#  效果图
 
-###GIF演示图
+###  GIF演示图
 <img src="https://github.com/zhijieeeeee/ClockView/blob/master/screenshot/preview.gif" width = "292" height = "480" alt="效果图" />
 
-###样式效果演示图
+###  样式效果演示图
 <div>
 <img src="https://github.com/zhijieeeeee/ClockView/blob/master/screenshot/pre1.png" width = "270" height = "480" alt="效果图" />
 <img src="https://github.com/zhijieeeeee/ClockView/blob/master/screenshot/pre2.png" width = "270" height = "480" alt="效果图" />
 <img src="https://github.com/zhijieeeeee/ClockView/blob/master/screenshot/pre3.png" width = "270" height = "480" alt="效果图" />
 </div>
-#基本使用
+#  基本使用
 
-###1.在gradle中添加依赖
+###  1.在gradle中添加依赖
 	
 	compile 'com.don:clockviewlibrary:1.0.1'
 
-###2.布局中使用
+###  2.布局中使用
 
 使用默认的样式，其中宽高可根据自己的需求设置，支持wrap\_content，match\_parent，固定尺寸
 
@@ -57,7 +57,7 @@
 
 
 
-###3.代码中可设置时间的监听
+###  3.代码中可设置时间的监听
 
 	ClockView clockView = (ClockView) findViewById(R.id.clockView);
     clockView.setOnCurrentTimeListener(new ClockView.OnCurrentTimeListener() {
@@ -67,18 +67,18 @@
             }
         });
 
-#实现解析
+#  实现解析
 
 关于项目的实现方式，大家可以参考我的博客[Android自定义控件：时钟](http://blog.csdn.net/u013155862/article/details/53740211)，里面有详细的绘制分析
 
-#更新日志
-### V1.0.1
+#  更新日志
+###  V1.0.1
 * 添加是否绘制中心圆的属性draw\_center\_circle
 
-### V1.0.0
+###  V1.0.0
 * 动态时钟View
 
-#License
+#  License
         Copyright 2016 zhijieeeeee
 
         Licensed under the Apache License, Version 2.0 (the "License");
